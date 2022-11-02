@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
-        // credits to strimi
+        // credits to shavi cxeni
 
         resultTextView = findViewById(R.id.resultTextView)
     }
