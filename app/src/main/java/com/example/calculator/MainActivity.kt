@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
     fun operationClick(clickedView:View){
         if (clickedView is TextView){
+            if(operation != ""){
+                equalsClick(clickedView)
+            }
             if(resultTextView.text != "" ){
                 if(resultTextView.text != "."){
                     operand = resultTextView.text.toString().toDouble()
