@@ -32,10 +32,13 @@ class MainActivity : AppCompatActivity() {
             var text = resultTextView.text.toString()
             val number = clickedView.text.toString()
             if (text == "0" && number != "."){
-                    text = ""
+                text = ""
             }
             if (number == "."){
-                if("." !in text) {
+                if (text == ""){
+                    resultTextView.text = "0."
+                }
+                else if("." !in text) {
                     resultTextView.text = text + number
                 }
             }
