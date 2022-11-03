@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
         // credits to shavi cxeni
@@ -30,47 +31,47 @@ class MainActivity : AppCompatActivity() {
         if (clickedView is TextView){
             var text = resultTextView.text.toString()
             val number = clickedView.text.toString()
-            if (text == "0"){
-                text = ""
+            if (text == "0" && number != "."){
+                    text = ""
             }
             if (number == "."){
-                if("." !in text){
+                if("." !in text) {
                     resultTextView.text = text + number
                 }
             }
             else{
                 resultTextView.text = text + number
             }
-
         }
     }
 
     fun operationClick(clickedView:View){
         if (clickedView is TextView){
-            if(resultTextView.text != ""){
-                operand = resultTextView.text.toString().toDouble()
+            if(resultTextView.text != "" ){
+                if(resultTextView.text != "."){
+                    operand = resultTextView.text.toString().toDouble()
+                }
             }
             operation = clickedView.text.toString()
             resultTextView.text = ""
         }
     }
 
-
     fun equalsClick(clickedView: View) {
-        if (resultTextView.text != "") {
-            val secondOperand = resultTextView.text.toString().toDouble()
-            when (operation) {
-                "+" -> resultTextView.text = (operand + secondOperand).toString()
-                "-" -> resultTextView.text = (operand - secondOperand).toString()
-                "*" -> resultTextView.text = (operand * secondOperand).toString()
-                "/" -> resultTextView.text = (operand / secondOperand).toString()
-                "x^y" ->resultTextView.text = (operand.pow(secondOperand)).toString()
-                "%" -> resultTextView.text = ((operand * secondOperand) / 100).toString()
-
-            }
-            if (resultTextView.text.toString().toDouble() % 1.0 == 0.0 ){
-                resultTextView.text = resultTextView.text.toString().dropLast(2)
-
+        if (resultTextView.text != "" ) {
+            if (resultTextView.text != "."){
+                val secondOperand = resultTextView.text.toString().toDouble()
+                when (operation) {
+                    "+" -> resultTextView.text = (operand + secondOperand).toString()
+                    "-" -> resultTextView.text = (operand - secondOperand).toString()
+                    "*" -> resultTextView.text = (operand * secondOperand).toString()
+                    "/" -> resultTextView.text = (operand / secondOperand).toString()
+                    "x^y" -> resultTextView.text = (operand.pow(secondOperand)).toString()
+                    "%" -> resultTextView.text = ((operand * secondOperand) / 100).toString()
+                }
+                if (resultTextView.text.toString().toDouble() % 1.0 == 0.0) {
+                    resultTextView.text = resultTextView.text.toString().dropLast(2)
+                }
             }
         }
     }
@@ -85,10 +86,8 @@ class MainActivity : AppCompatActivity() {
             resultTextView.text = ""
             operand = 0.0
             operation = ""
-
         }
     }
-
 }
 
 
