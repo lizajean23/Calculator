@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     "%" -> resultTextView.text = ((operand * secondOperand) / 100).toString()
                 }
                 if (resultTextView.text.toString().toDouble() % 1.0 == 0.0) {
-                    resultTextView.text = resultTextView.text.toString().dropLast(2)
+                    resultTextView.text = resultTextView.text.toString().toDouble().toString().dropLast(2)
                 }
             }
         }
